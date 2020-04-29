@@ -1,0 +1,251 @@
+body {
+  background-color: #232426;
+  min-width: 310px;
+  height: 400px;
+  margin: auto;
+}
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  float: none;
+}
+h1 {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 2.6rem;
+  text-align: center;
+  padding-bottom: 4px;
+  margin: auto;
+}
+.about {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 1.1rem;
+  text-align: center;
+  padding-bottom: 4px;
+  margin-top: 15px;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+}
+#info {
+  margin: 10px;
+}
+
+h3 {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 2rem;
+  text-align: center;
+  padding-bottom: 4px;
+  margin: auto;
+}
+h4 {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 4px;
+}
+legend {
+  padding: 6px;
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+div.form {
+  display: block;
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+#polling {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+body {
+  font: helvetica;
+  padding-bottom: 200px;
+}
+
+#setpol,
+#polinp {
+  margin: auto;
+}
+
+input {
+  width: 300px;
+  height: 30px;
+  background-color: #232426;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+}
+
+hr {
+  border-top: 3.5px solid #dcdcdc;
+  width: 100%;
+}
+
+button {
+  background-color: #232426;
+  display: inherit;
+  width: 150px;
+  height: 30px;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+@media all and (max-width: 30em) {
+  button {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+.gitbutton {
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  background-image: url(git.png);
+  background-color: #ffffff;
+  width: 103px;
+  height: 43px;
+  padding: 3px;
+  border: 0.1em solid #46484c;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.readingboxes {
+  border: 3px;
+  border-style: solid;
+  text-align: center;
+  width: 120px;
+  margin: 30px;
+}
+
+#powerfs {
+  color: #cc66ff;
+}
+
+#volfs {
+  color: #3399ff;
+}
+
+#curfs {
+  color: #cc0033;
+}
+
+#powbox,
+#volbox,
+#curbox,
+#unitbox {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 1.35rem;
+  text-align: center;
+}
+.blinking-on {
+  fill: red;
+  animation: 2s blink ease infinite;
+}
+.blinking-off {
+  fill: darkgrey;
+  opacity: 0.5;
+  animation: none;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.live {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: -80px;
+  margin-bottom: auto;
+}
+.live > svg {
+  margin-top: -30px;
+}
+.livetext {
+  color: #dcdcdc;
+  font-family: Arial;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: auto;
+}
+
+#maincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container {
+  width: 400px;
+  height: 250px;
+  margin: 1px;
+  padding: 1px;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  height: fit-content;
+  margin-top: auto;
+  margin-bottom: 10px;
+}
