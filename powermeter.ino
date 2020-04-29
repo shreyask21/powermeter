@@ -51,7 +51,7 @@ void setup() {
   TFT.setRotation(2);
   TFT.fillScreen(ST77XX_BLACK);
   TFT.setFont(&FreeSansBold18pt7b);
-  xTaskCreatePinnedToCore(display_data, "DisplayStask", 10000, NULL, 0, &Task1, 0);
+  xTaskCreatePinnedToCore(display_data, "DisplayStask", 10000, NULL, 1, &Task1, 0);
   WiFi.disconnect();
   WiFi.mode(WIFI_OFF);
   WiFi.mode(WIFI_AP);
@@ -89,6 +89,7 @@ void display_data(void * parameter) {
     TFT.print("I = " + String(current)); TFT.println("mA");
     TFT.print("P = " + String(voltage * current)); TFT.println("mW");
     delay(2000);
+    TFT.fillScreen(ST77XX_BLACK);
   }
 }
 /************************************************************/
@@ -140,8 +141,17 @@ void addServerHandlers() {
   server.on("/theme.js", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(SPIFFS, "/theme.js", "text/javascript");
   });
+  server.on("/service-worker.js", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(SPIFFS, "/service-worker.js", "text/javascript");
+  });
+  server.on("/manifest.json", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(SPIFFS, "/manifest.json", "application/json");
+  });
   server.on("/meter.png", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(SPIFFS, "/meter.png", "image/png");
+  });
+  server.on("/meter-large.png", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(SPIFFS, "/meter-large.png", "image/png");
   });
   server.on("/git.png", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(SPIFFS, "/git.png");

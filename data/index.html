@@ -2,9 +2,13 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="apple-touch-icon" sizes="128x128" href="meter.png">
+    <link rel="icon" sizes="192x192" href="meter.png">
+    <link rel="shortcut icon" href="meter.png" />
     <script src="graph.js"></script>
     <script src="theme.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Power Meter</title>
   </head>
 
@@ -65,5 +69,16 @@
       </form>
     </div>
   </body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      console.log("Will the service worker register?");
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function(reg){
+          console.log("Yes, it did.");
+        }).catch(function(err) {
+          console.log("No it didn't. This happened: ", err)
+        });
+    }
+  </script>
   <script src="datahandler.js"></script>
 </html>

@@ -84,7 +84,7 @@ var currentChart = new Highcharts.Chart({
 });
 
 function getPower() {
-  var request =  String(localinstance ? ip + "/power" : "/power");
+  var request = String(localinstance ? ip + "/power" : "/power");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -207,7 +207,9 @@ function connectToServer() {
         document.getElementById("blinker").classList.add("blinking-off");
         retrycount++;
       } else if (retrycount < 8) {
-        console.log("Retry count exceeded. We will keep retrying in the background.");
+        console.log(
+          "Retry count exceeded. We will keep retrying in the background."
+        );
         alert("Error connecting to webserver!\nRefresh and try again.");
         retrycount++;
       }
