@@ -6,13 +6,19 @@ It is a current/voltage sensor based on the texas instruments [INA219 current+vo
 
 ## Features
 
-1. Captive Portal Webpage
-   When the ESP32 boots up it acts as a wifi access point and serves a captive portal webpage on address `meter.me` or `192.168.1.1`.
-   ![1](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/webpage.png)
-2. AJAX Based Live Graphs
-   The live readings are fetched automatically without refreshing the webpage on a customizable polling rate.
-   ![2](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/graph.gif)
-3. Live Readings on a TFT Display
+### 1. Captive Portal Webpage
+
+When the ESP32 boots up it acts as a wifi access point and serves a captive portal webpage on address `meter.me` or `192.168.1.1`.
+
+![1](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/webpage.png)
+
+### 2. AJAX Based Live Graphs
+
+The live readings are fetched automatically without refreshing the webpage on a customizable polling rate.
+
+![2](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/graph.gif)
+
+### 3. Live Readings on a TFT Display
 
 ## Required Libraries/Tools:
 
