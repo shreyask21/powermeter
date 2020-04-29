@@ -96,7 +96,7 @@ void display_data(void * parameter) {
 /********* Add Listeners For Server HTTP Requests ***********/
 void addServerHandlers() {
   server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
-    request->redirect("http://meter.me/view");
+    request->redirect("http://meter.local/view");
   });
   server.on("/view", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(SPIFFS, "/index.html");
@@ -115,6 +115,9 @@ void addServerHandlers() {
   });
   server.on("/power", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(200, "text/plain", String(voltage * current).c_str());
+  });
+  server.on("/check", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(200, "text/plain", "ACK");
   });
   server.on("/setcalc", HTTP_GET, [](AsyncWebServerRequest * request) {
     request->send(SPIFFS, "/index.html");
