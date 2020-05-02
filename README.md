@@ -49,7 +49,7 @@ Here is a quick look at the pin connection mapping:
 
 #### 2. ST7789
 
-| INA219 Pin  | ESP32 Pin  |
+| ST7789 Pin  | ESP32 Pin  |
 | :---------: | :--------: |
 |     GND     |    3V3     |
 |     VCC     |    GND     |
@@ -73,7 +73,7 @@ If your display **does not have a CS (Chip Select) pin** then you have _two opti
 
 #### 3. SD Card
 
-| INA219 Pin | ESP32 Pin |
+| SD Pin | ESP32 Pin |
 | :--------: | :-------: |
 |    GND     |  VIN(5V)  |
 |    VCC     |    GND    |

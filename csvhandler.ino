@@ -1,5 +1,6 @@
 void csv_prepare() {
   if (SD_INSERTED) {
+    startMillis = millis();
     String newfilename;
     uint32_t filecounter = 0;
     File root = SD.open("/");
@@ -37,11 +38,13 @@ void csv_prepare() {
 
 void csv_write(float power, float voltage, float current) {
   if (SD_INSERTED && !SERVER_BUSY) {
+    SD_BUSY = true;
     File CSVFile = SD.open("/latest.csv", FILE_APPEND);
-    String data = String(power, 3) + "," + String(voltage, 3) 
-                  + "," + String(current, 3) + "," 
-                  + String((((float)millis() - (float)startMillis)/(float)1000), 3);
+    String data = String(power, 3) + "," + String(voltage, 3)
+                  + "," + String(current, 3) + ","
+                  + String((((float)millis() - (float)startMillis) / (float)1000), 3);
     CSVFile.println(data.c_str());
     CSVFile.close();
+    SD_BUSY = false;
   }
 }

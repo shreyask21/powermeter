@@ -30,6 +30,8 @@ Adafruit_INA219 INA219;
 #include <SD.h>
 #define SD_CS 13
 bool SD_INSERTED = false;
+bool SD_EJECT_REQEST = false;
+bool SD_BUSY = false;
 /************************************************************/
 
 /**************** ST7789 driver declaration *****************/
@@ -87,15 +89,19 @@ void display_data(void *parameter)
 {
   while (true)
   {
-    readSensorData();
-    TFT.setTextColor(0xCB3E, TFT_BLACK);
-    TFT.drawFloat(power, 3, 120, 53);
-    TFT.setTextColor(0x3CDF, TFT_BLACK);
-    TFT.drawFloat(voltage, 3, 120, 133);
-    TFT.setTextColor(0xC826, TFT_BLACK);
-    TFT.drawFloat(current, 3, 120, 210);
-    csv_write(power, voltage, current);
-    delay(200);
+    if (SD_EJECT_REQEST) {
+      ejectSD();
+    } else {
+      readSensorData();
+      TFT.setTextColor(0xCB3E, TFT_BLACK);
+      TFT.drawFloat(power, 3, 120, 53);
+      TFT.setTextColor(0x3CDF, TFT_BLACK);
+      TFT.drawFloat(voltage, 3, 120, 133);
+      TFT.setTextColor(0xC826, TFT_BLACK);
+      TFT.drawFloat(current, 3, 120, 210);
+      csv_write(power, voltage, current);
+      delay(200);
+    }
   }
 }
 /************************************************************/

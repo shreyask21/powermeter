@@ -25,8 +25,7 @@ void initialize()
   /************************************************************/
 
   /****************** Start SD Card driver ********************/
-  SD_INSERTED = SD.begin(SD_CS);
-  printstartuptext("SD Card", SD_INSERTED == true ? true : 2);
+  printstartuptext("SD Card", checkSD());
   /************************************************************/
 
   /*************** Start Rest Of The Program ******************/
@@ -34,7 +33,7 @@ void initialize()
   {
     TFT.setTextColor(TFT_GREEN, TFT_BLACK);
     TFT.setCursor(0, 0, 4);
-    TFT.println("Initialization OK!");
+    TFT.println("Initialization OK");
     TFT.setTextColor(TFT_WHITE, TFT_BLACK);
     delay(3000);
     TFT.fillScreen(TFT_BLACK);
@@ -46,6 +45,8 @@ void initialize()
     TFT.setTextPadding(130);
     TFT.setCursor(0, 0, 4);
     INA219.setCalibration_16V_400mA();
+    pinMode(0, INPUT_PULLUP);
+    attachInterrupt(0, ejectISR, FALLING);
 
     /**************** Pin async task to core 1 ******************/
     xTaskCreatePinnedToCore(display_data, "DisplayStask", 10000, NULL, 1, &Task1, 0);
@@ -68,12 +69,13 @@ void initialize()
     server.begin();
     addServerHandlers();
     csv_prepare();
-    startMillis = millis();
     /************************************************************/
   }
   else
   {
-    TFT.println("Program Halted!");
+    TFT.setCursor(0, 0, 4);
+    TFT.setTextColor(TFT_RED, TFT_BLACK);
+    TFT.println("Program Halted [!]");
     while (1) {
       yield();
     }
@@ -95,18 +97,18 @@ void printstartuptext(char *text, int status)
   if (status == 0)
   {
     TFT.setTextColor(TFT_RED, TFT_BLACK);
-    TFT.print("[Err]   ");
+    TFT.print("[Err]      ");
     init_ok = false;
   }
   else if (status == 1)
   {
     TFT.setTextColor(TFT_GREEN, TFT_BLACK);
-    TFT.print("[OK]   ");
+    TFT.print("[OK]       ");
   }
   else if (status == 2)
   {
     TFT.setTextColor(TFT_YELLOW, TFT_BLACK);
-    TFT.print("[Warn] ");
+    TFT.print("[Warn]  ");
   }
   TFT.setTextColor(TFT_WHITE, TFT_BLACK);
   TFT.println(text);
