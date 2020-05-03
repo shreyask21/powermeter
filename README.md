@@ -20,7 +20,7 @@ The live readings are fetched automatically without refreshing the webpage with 
 
 ### 3. Live Readings on a TFT Display
 
-Displays live data on ST7789 TFT display asynchronously, 5 times every second.
+Displays live data on ST7789 TFT display asynchronously.
 
 ![3](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/display1.png) ![4](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/display2.png)
 
