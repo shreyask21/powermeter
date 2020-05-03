@@ -33,7 +33,7 @@ void initialize()
   {
     TFT.setTextColor(TFT_GREEN, TFT_BLACK);
     TFT.setCursor(0, 0, 4);
-    TFT.println("Initialization OK");
+    TFT.println("Self Test Passed");
     TFT.setTextColor(TFT_WHITE, TFT_BLACK);
     delay(3000);
     TFT.fillScreen(TFT_BLACK);
@@ -47,10 +47,6 @@ void initialize()
     INA219.setCalibration_16V_400mA();
     pinMode(0, INPUT_PULLUP);
     attachInterrupt(0, ejectISR, FALLING);
-
-    /**************** Pin async task to core 1 ******************/
-    xTaskCreatePinnedToCore(display_data, "DisplayStask", 10000, NULL, 1, &Task1, 0);
-    /************************************************************/
 
     /************************ Start WiFi ************************/
     WiFi.disconnect();

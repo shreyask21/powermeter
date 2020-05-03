@@ -57,7 +57,7 @@ const char *password = "password";
 /************************************************************/
 
 /***********************   Variables   **********************/
-float voltage, current, power;
+volatile float voltage, current, power;
 unsigned long startMillis;
 /************************************************************/
 
@@ -72,6 +72,19 @@ void setup()
 void loop()
 {
   dnsServer.processNextRequest();
+  if (SD_EJECT_REQEST) {
+    ejectSD();
+  } else {
+    readSensorData();
+    TFT.setTextColor(0xCB3E, TFT_BLACK);
+    TFT.drawNumber(power, 120, 53);
+    TFT.setTextColor(0x3CDF, TFT_BLACK);
+    TFT.drawFloat(voltage, 3, 120, 133);
+    TFT.setTextColor(0xC826, TFT_BLACK);
+    TFT.drawFloat(current, 1, 120, 210);
+    csv_write(power, voltage, current);
+    delay(500);
+  }
 }
 /************************************************************/
 
@@ -81,27 +94,5 @@ void readSensorData()
   voltage = INA219.getBusVoltage_V() + (INA219.getShuntVoltage_mV() / 1000.0);
   current = INA219.getCurrent_mA();
   power   = INA219.getPower_mW();
-}
-/************************************************************/
-
-/******************* Display Data To TFT ********************/
-void display_data(void *parameter)
-{
-  while (true)
-  {
-    if (SD_EJECT_REQEST) {
-      ejectSD();
-    } else {
-      readSensorData();
-      TFT.setTextColor(0xCB3E, TFT_BLACK);
-      TFT.drawFloat(power, 3, 120, 53);
-      TFT.setTextColor(0x3CDF, TFT_BLACK);
-      TFT.drawFloat(voltage, 3, 120, 133);
-      TFT.setTextColor(0xC826, TFT_BLACK);
-      TFT.drawFloat(current, 3, 120, 210);
-      csv_write(power, voltage, current);
-      delay(200);
-    }
-  }
 }
 /************************************************************/

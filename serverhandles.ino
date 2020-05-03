@@ -12,10 +12,10 @@ void addServerHandlers()
 
     /*************** GET requests to send data ******************/
     server.on("/voltage", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", String(voltage).c_str());
+        request->send(200, "text/plain", String(voltage, 3).c_str());
     });
     server.on("/current", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", String(current).c_str());
+        request->send(200, "text/plain", String(current, 1).c_str());
     });
     server.on("/power", HTTP_GET, [](AsyncWebServerRequest *request) {
         request->send(200, "text/plain", String(power).c_str());

@@ -90,3 +90,6 @@ If your display **does not have a CS (Chip Select) pin** then you have _two opti
 4. [Adafruit INA219 Library](https://github.com/adafruit/Adafruit_INA219)
 5. [ESP32 AsyncTCP Library](https://github.com/me-no-dev/AsyncTCP)
 6. [ESPAsyncWebServer Library](https://github.com/me-no-dev/ESPAsyncWebServer)
+
+
+![7](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/board.png)

@@ -1,10 +1,13 @@
+File CSVFile;
+int interval = 0;
+
 void csv_prepare() {
   if (SD_INSERTED) {
     startMillis = millis();
     String newfilename;
     uint32_t filecounter = 0;
     File root = SD.open("/");
-    File CSVFile = SD.open("/latest.csv");
+    CSVFile = SD.open("/latest.csv");
     if (CSVFile && !CSVFile.isDirectory()) {
       File tmpfile = root.openNextFile();
       tmpfile = root.openNextFile(); //Open first file in root
@@ -33,15 +36,16 @@ void csv_prepare() {
     CSVFile = SD.open("/latest.csv", FILE_WRITE);
     CSVFile.println("Power (mW), Voltage (V), Current (mA), Time (s)");
     CSVFile.close();
+    CSVFile = SD.open("/latest.csv", FILE_APPEND);
   }
 }
 
 void csv_write(float power, float voltage, float current) {
   if (SD_INSERTED && !SERVER_BUSY) {
     SD_BUSY = true;
-    File CSVFile = SD.open("/latest.csv", FILE_APPEND);
-    String data = String(power, 3) + "," + String(voltage, 3)
-                  + "," + String(current, 3) + ","
+    CSVFile = SD.open("/latest.csv", FILE_APPEND);
+    String data = String(power) + "," + String(voltage, 3)
+                  + "," + String(current, 1) + ","
                   + String((((float)millis() - (float)startMillis) / (float)1000), 3);
     CSVFile.println(data.c_str());
     CSVFile.close();
