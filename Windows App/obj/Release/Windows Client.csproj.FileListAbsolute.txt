@@ -1,0 +1,8 @@
+D:\Projects\powermeter\Windows App\bin\Release\PowerMeter.exe
+D:\Projects\powermeter\Windows App\bin\Release\PowerMeter.pdb
+D:\Projects\powermeter\Windows App\obj\Release\PowerMeter.PowerMeterUI.resources
+D:\Projects\powermeter\Windows App\obj\Release\PowerMeter.Properties.Resources.resources
+D:\Projects\powermeter\Windows App\obj\Release\Windows Client.csproj.GenerateResource.cache
+D:\Projects\powermeter\Windows App\obj\Release\Windows Client.csproj.CoreCompileInputs.cache
+D:\Projects\powermeter\Windows App\obj\Release\PowerMeter.exe
+D:\Projects\powermeter\Windows App\obj\Release\PowerMeter.pdb

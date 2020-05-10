@@ -1,0 +1,9 @@
+C:\Users\shrey\source\repos\COMPortTest\bin\Debug\COMPortTest.exe
+C:\Users\shrey\source\repos\COMPortTest\bin\Debug\COMPortTest.pdb
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.csprojAssemblyReference.cache
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.Properties.Resources.resources
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.csproj.GenerateResource.cache
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.csproj.CoreCompileInputs.cache
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.exe
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.pdb
+C:\Users\shrey\source\repos\COMPortTest\obj\Debug\COMPortTest.PowerMeterUI.resources

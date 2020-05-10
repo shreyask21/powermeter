@@ -47,7 +47,7 @@ void initialize()
     INA219.setCalibration_16V_400mA();
     pinMode(0, INPUT_PULLUP);
     attachInterrupt(0, ejectISR, FALLING);
-
+    Serial.begin(115200);
     /************************ Start WiFi ************************/
     WiFi.disconnect();
     WiFi.mode(WIFI_OFF);

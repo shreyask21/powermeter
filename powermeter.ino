@@ -82,6 +82,7 @@ void loop()
     TFT.drawFloat(voltage, 3, 120, 133);
     TFT.setTextColor(0xC826, TFT_BLACK);
     TFT.drawFloat(current, 1, 120, 210);
+    send_serial_data(power, voltage, current);
     csv_write(power, voltage, current);
     delay(500);
   }

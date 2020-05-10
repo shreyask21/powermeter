@@ -8,7 +8,7 @@ It is a current/voltage sensor based on the texas instruments [INA219 current+vo
 
 ### 1. Captive Portal Webpage
 
-When the ESP32 boots up it acts as a wifi access point and serves a captive portal webpage on address `meter.local` or `192.168.1.1`
+When the ESP32 boots up it acts as a wifi access point and serves a captive portal webpage on address `meter.local` or `192.168.43.1`
 
 ![1](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/webpage.png)
 
