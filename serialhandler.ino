@@ -1,3 +1,3 @@
-void send_serial_data(float power, float voltage, float current) {
-  Serial.println(String(power) + "," + String(voltage, 3) + "," + String(current, 1));
+void send_serial_data() {
+  Serial.println(data_string);
 }

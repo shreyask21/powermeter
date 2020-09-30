@@ -57,8 +57,9 @@ const char *password = "password";
 /************************************************************/
 
 /***********************   Variables   **********************/
-volatile float voltage, current, power;
-unsigned long startMillis;
+volatile float voltage, current, power, charge, energy;
+unsigned long startMillis, currentMillis;
+String data_string;
 /************************************************************/
 
 /************************** SETUP ***************************/
@@ -76,14 +77,20 @@ void loop()
     ejectSD();
   } else {
     readSensorData();
-    TFT.setTextColor(0xCB3E, TFT_BLACK);
-    TFT.drawNumber(power, 120, 53);
-    TFT.setTextColor(0x3CDF, TFT_BLACK);
-    TFT.drawFloat(voltage, 3, 120, 133);
-    TFT.setTextColor(0xC826, TFT_BLACK);
-    TFT.drawFloat(current, 1, 120, 210);
-    send_serial_data(power, voltage, current);
-    csv_write(power, voltage, current);
+    TFT.setTextDatum(MR_DATUM);
+    TFT.setTextPadding(100);
+    TFT.setTextColor(0x059E, TFT_BLACK);
+    TFT.drawFloat(voltage, 3, 228, 26);
+    TFT.setTextColor(0xF800, TFT_BLACK);
+    TFT.drawFloat(current, 3, 228, 73);
+    TFT.setTextColor(0xC81F, TFT_BLACK);
+    TFT.drawFloat(power, 3, 228, 121);
+    TFT.setTextColor(0x058A, TFT_BLACK);
+    TFT.drawFloat(charge, 3, 228, 167);
+    TFT.setTextColor(0xFE00, TFT_BLACK);
+    TFT.drawFloat(energy, 3, 228, 215);
+    send_serial_data();
+    csv_write();
     delay(500);
   }
 }
@@ -92,8 +99,18 @@ void loop()
 /****************** Read Data From Sensor *******************/
 void readSensorData()
 {
+  currentMillis = millis();
   voltage = INA219.getBusVoltage_V() + (INA219.getShuntVoltage_mV() / 1000.0);
   current = INA219.getCurrent_mA();
-  power   = INA219.getPower_mW();
+  power   = voltage * current;
+  power   = power < 0 ? -power : power;
+  charge += current / 7200;
+  energy += power / 7200;
+  data_string = String(voltage, 3)
+                + "," + String(current, 3)
+                + "," + String(power,   3)
+                + "," + String(charge,  3)
+                + "," + String(energy,  3)
+                + "," + String((float)((currentMillis - startMillis) / (float)1000.0), 3);
 }
 /************************************************************/

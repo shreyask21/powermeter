@@ -1,0 +1,15 @@
+{
+  "short_name": "Power Meter",
+  "name": "Power Meter",
+  "icons": [
+    {
+      "src": "/meter-large.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#232426",
+  "Theme_color": "#232426",
+  "display": "standalone"
+}
