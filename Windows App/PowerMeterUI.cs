@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PowerMeter
@@ -22,11 +23,15 @@ namespace PowerMeter
         public void AddDataMethod(String SerialData)
         {
             string[] Readings = SerialData.Split(',');
-            if (Readings != null && Readings.Length == 3 && !IsEmptyOrNull(Readings[0]))
+            Console.WriteLine(SerialData);
+            if (Readings != null && Readings.Length > 5 && !IsEmptyOrNull(Readings[0]))
             {
-                PowerBox.Text = Readings[0];
-                VoltageBox.Text = Readings[1];
-                CurrentBox.Text = Readings[2];
+                VoltageBox.Text = Readings[0];
+                CurrentBox.Text = Readings[1];
+                PowerBox.Text = Readings[2];
+                ChargeBox.Text = Readings[3];
+                EnergyBox.Text = Readings[4];
+                TimeBox.Text = Readings[5];
             }
         }
 
@@ -56,6 +61,9 @@ namespace PowerMeter
                 PowerBox.Text = "?";
                 VoltageBox.Text = "?";
                 CurrentBox.Text = "?";
+                ChargeBox.Text = "?";
+                EnergyBox.Text = "?";
+                TimeBox.Text = "?";
                 Text = "Power Meter [No Connection]";
                 MessageBox.Show("No COM ports found", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -84,9 +92,7 @@ namespace PowerMeter
 
         private void Serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort sp = (SerialPort)sender;
-            string indata = sp.ReadExisting();
-           PowerBox.Invoke(DataDelegate, new Object[] { indata });
+            PowerBox.Invoke(DataDelegate, new Object[] { Serial.ReadLine() });
         }
 
         private bool IsEmptyOrNull(string s)
@@ -104,11 +110,10 @@ namespace PowerMeter
                     Serial = new SerialPort(SelectedCOMPort, BaudRate, Parity.None, 8, StopBits.One);
                     Serial.DataReceived += Serial_DataReceived;
                     Serial.Open();
-                    Serial.DiscardInBuffer();
-                    Serial.DiscardOutBuffer();
+                    Monitoring = true;
                     MonitorBtn.Text = "Stop Monitoring";
                     Text = "Power Meter [Monitoring: " + SelectedCOMPort + "]";
-                    Monitoring = true;
+                    
                 }
                 catch (Exception ex)
                 {
@@ -154,6 +159,9 @@ namespace PowerMeter
                 PowerBox.Text = "?";
                 VoltageBox.Text = "?";
                 CurrentBox.Text = "?";
+                ChargeBox.Text = "?";
+                EnergyBox.Text = "?";
+                TimeBox.Text = "?";
                 Text = "Power Meter [No Connection]";
             }
         }

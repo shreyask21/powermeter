@@ -41,10 +41,10 @@ void initialize()
     delay(5000);
     TFT.fillScreen(TFT_BLACK);
     drawBmp("/background.bmp", 0, 0);
-    TFT.setTextDatum(MC_DATUM);
-    TFT.setTextPadding(130);
+    TFT.setTextDatum(MR_DATUM);
+    TFT.setTextPadding(160);
     TFT.setCursor(0, 0, 4);
-    INA219.setCalibration_16V_400mA();
+    INA219.setCalibration_32V_2A();
     pinMode(0, INPUT_PULLUP);
     attachInterrupt(0, ejectISR, FALLING);
     Serial.begin(115200);
@@ -88,7 +88,7 @@ void initialize()
     @param status The status of the operation
 
 */
-void printstartuptext(char *text, int status)
+void printstartuptext(String text, int status)
 {
   if (status == 0)
   {

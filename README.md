@@ -32,6 +32,10 @@ The data is logged on the SD card in `.CSV` format with timestamps so plotting i
 
 ![6](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/multiplefiles.png)
 
+### 5. Windows app
+
+![7](https://raw.githubusercontent.com/shreyask21/powermeter/master/img/windowsapp.png)
+
 ## C) Pin Mapping
 
 Here is a quick look at the pin connection mapping:

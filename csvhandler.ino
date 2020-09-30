@@ -34,20 +34,17 @@ void csv_prepare() {
     root.close();
     CSVFile.close();
     CSVFile = SD.open("/latest.csv", FILE_WRITE);
-    CSVFile.println("Power (mW), Voltage (V), Current (mA), Time (s)");
+    CSVFile.println("Voltage (V), Current (mA), Power (mW), Charge (mAh), Energy (mWh), Time (s)");
     CSVFile.close();
     CSVFile = SD.open("/latest.csv", FILE_APPEND);
   }
 }
 
-void csv_write(float power, float voltage, float current) {
+void csv_write() {
   if (SD_INSERTED && !SERVER_BUSY) {
     SD_BUSY = true;
     CSVFile = SD.open("/latest.csv", FILE_APPEND);
-    String data = String(power) + "," + String(voltage, 3)
-                  + "," + String(current, 1) + ","
-                  + String((((float)millis() - (float)startMillis) / (float)1000), 3);
-    CSVFile.println(data.c_str());
+    CSVFile.println(data_string.c_str());
     CSVFile.close();
     SD_BUSY = false;
   }

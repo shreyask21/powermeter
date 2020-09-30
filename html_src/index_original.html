@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="apple-touch-icon" sizes="128x128" href="meter.png">
+    <link rel="icon" sizes="192x192" href="meter.png">
+    <link rel="shortcut icon" href="meter.png" />
+    <script src="graph.js"></script>
+    <script src="theme.js"></script>
+    <title>Power Meter</title>
+  </head>
+
+  <body>
+    <img src="meter.png" class="image" />
+    <h1>Power Meter</h1>
+    <hr />
+    <div class="live">
+      <svg height="70" width="70" class="blinking-off" id="blinker">
+        <circle cx="50" cy="50" r="8" />
+      </svg>
+      <span class="livetext">
+        Live Readings
+      </span>
+    </div>
+    <div class="boxes">
+      <fieldset class="readingboxes" id="volfs">
+        <legend style="border: 2px solid #00B0F0;">Voltage</legend>
+        <p id="volbox">Connecting...</p>
+      </fieldset>
+      <fieldset class="readingboxes" id="curfs">
+        <legend style="border: 2px solid #FF0000;">Current</legend>
+        <p id="curbox">Connecting...</p>
+      </fieldset>
+      <fieldset class="readingboxes" id="powerfs">
+        <legend style="border: 2px solid #C800FF;">Power</legend>
+        <p id="powbox">Connecting...</p>
+      </fieldset>
+      <fieldset class="readingboxes" id="chafs">
+        <legend style="border: 2px solid #00B050;">Charge</legend>
+        <p id="chabox">Connecting...</p>
+      </fieldset>
+      <fieldset class="readingboxes" id="enerfs">
+        <legend style="border: 2px solid #FFC000;">Energy</legend>
+        <p id="enerbox">Connecting...</p>
+      </fieldset>
+    </div>
+    <hr />
+    <h3>Graphs</h3>
+    <div id="maincontainer">
+      <div id="chart-voltage" class="container"></div>
+      <div id="chart-current" class="container"></div>
+      <div id="chart-power" class="container"></div>
+      <div id="chart-charge" class="container"></div>
+      <div id="chart-energy" class="container"></div>
+    </div>
+    <hr />
+    <div id="polling">
+      <h3>Set Polling Rate</h3>
+      <input
+        type="text"
+        id="polinp"
+        placeholder="Polling rate in seconds"
+      /><br />
+    </div>
+    <button type="button" id="setpol">Set</button>
+    <hr />
+    <div class="form">
+      <form>
+        <h3>Change Calibration</h3>
+        <button type="button" id="setcala">16V 400mA</button>
+        <button type="button" id="setcalb">32V 1A</button>
+        <button type="button" id="setcalc">32V 2A</button>
+        <div class="about">
+          <p id="info">&copy; Shreyas Kulkarni</p>
+          <a href="https://github.com/shreyask21" class="gitbutton"></a>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="datahandler.js"></script>
+</html>
